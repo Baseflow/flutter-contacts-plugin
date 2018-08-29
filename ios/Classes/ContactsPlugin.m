@@ -1,5 +1,5 @@
 #import "ContactsPlugin.h"
-#import <contacts/contacts-Swift.h>
+#import <BFContacts/BFContacts-Swift.h>
 
 @implementation ContactsPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
