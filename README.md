@@ -6,8 +6,8 @@ A Flutter contacts plugin which provides easy access to the platform specific ad
 
 Branch  | Build Status 
 ------- | ------------
-develop | [![Build Status](https://travis-ci.com/BaseflowIT/flutter-contacts.svg?branch=develop)](https://travis-ci.com/BaseflowIT/flutter-contacts)
-master  | [![Build Status](https://travis-ci.com/BaseflowIT/flutter-contacts.svg?branch=master)](https://travis-ci.com/BaseflowIT/flutter-contacts)
+develop | [![Build Status](https://travis-ci.com/BaseflowIT/flutter-contacts-plugin.svg?branch=develop)](https://travis-ci.com/BaseflowIT/flutter-contacts)
+master  | [![Build Status](https://travis-ci.com/BaseflowIT/flutter-contacts-plugin.svg?branch=master)](https://travis-ci.com/BaseflowIT/flutter-contacts)
 
 ## Features
 
@@ -43,11 +43,11 @@ On iOS you'll need to add the `NSContactsUsageDescription` to your Info.plist fi
 
 ## Issues
 
-Please file any issues, bugs or feature request as an issue on our [GitHub](https://github.com/BaseflowIT/flutter-contacts/issues) page.
+Please file any issues, bugs or feature request as an issue on our [GitHub](https://github.com/BaseflowIT/flutter-contacts-plugin/issues) page.
 
 ## Want to contribute
 
-If you would like to contribute to the plugin (e.g. by improving the documentation, solving a bug or adding a cool new feature), please carefully review our [contribution guide](CONTRIBUTING.md) and send us your [pull request](https://github.com/BaseflowIT/flutter-contacts/pulls).
+If you would like to contribute to the plugin (e.g. by improving the documentation, solving a bug or adding a cool new feature), please carefully review our [contribution guide](CONTRIBUTING.md) and send us your [pull request](https://github.com/BaseflowIT/flutter-contacts-plugin/pulls).
 
 ## Author
 

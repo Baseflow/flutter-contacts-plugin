@@ -1,4 +1,4 @@
-library contacts;
+library contacts_plugin;
 
 import 'dart:async';
 
@@ -17,7 +17,7 @@ part 'models/phone_number.dart';
 part 'models/relationship.dart';
 part 'models/website.dart';
 
-class Contacts {
+class ContactsPlugin {
   static const MethodChannel _channel = const MethodChannel('contacts');
 
   static Future<String> get platformVersion async {

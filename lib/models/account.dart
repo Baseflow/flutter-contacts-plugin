@@ -1,3 +1,3 @@
-part of contacts;
+part of contacts_plugin;
 
 class Account {}

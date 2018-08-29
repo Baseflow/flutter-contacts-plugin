@@ -1,4 +1,4 @@
-group 'com.example.contacts'
+group 'com.example.contactsplugin'
 version '1.0-SNAPSHOT'
 
 buildscript {

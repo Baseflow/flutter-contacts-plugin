@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:contacts/contacts.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:contacts_plugin/contacts_plugin.dart';
 
 void main() => runApp(new MyApp());
 
@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = await Contacts.platformVersion;
+      platformVersion = await ContactsPlugin.platformVersion;
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
