@@ -1,4 +1,4 @@
-part of contacts;
+part of contacts_plugin;
 
 class Contact {
   List<Address> _addresses = <Address>[];

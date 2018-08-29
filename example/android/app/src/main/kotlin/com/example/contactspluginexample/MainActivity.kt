@@ -1,4 +1,4 @@
-package com.example.contactsexample
+package com.example.contactspluginexample
 
 import android.os.Bundle
 

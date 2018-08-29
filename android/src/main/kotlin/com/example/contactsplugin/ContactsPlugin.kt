@@ -1,4 +1,4 @@
-package com.example.contacts
+package com.example.contactsplugin
 
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -10,7 +10,7 @@ class ContactsPlugin(): MethodCallHandler {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar): Unit {
-      val channel = MethodChannel(registrar.messenger(), "contacts")
+      val channel = MethodChannel(registrar.messenger(), "contacts_plugin")
       channel.setMethodCallHandler(ContactsPlugin())
     }
   }
