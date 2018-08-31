@@ -39,6 +39,7 @@ matrix:
       before_script:
         - ./scripts/before_build_apks.sh
         - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
+        - export ANDROID_HOME=$HOME/android-sdk
         - cd ./example
       script:
         - flutter build apk
