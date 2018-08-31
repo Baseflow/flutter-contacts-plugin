@@ -38,10 +38,11 @@ matrix:
             - fonts-droid
       before_script:
         - ./scripts/before_build_apks.sh
+        - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
         - cd ./example
       script:
         - flutter build apk
-    # Job 2) Build the example binary for iOS (IPA)
+    # Job 3) Build the example binary for iOS (IPA)
     - os: osx
       env:
         - SHARD="Build example ipas"
@@ -49,6 +50,7 @@ matrix:
       osx_image: xcode9.3
       before_script:
         - ./scripts/before_build_ipas.sh
+        - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
         - cd ./example
       script:
         - flutter build ios --no-codesign
