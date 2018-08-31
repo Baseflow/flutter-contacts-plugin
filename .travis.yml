@@ -37,9 +37,6 @@ matrix:
             - fonts-droid
       before_script:
         - ./scripts/before_build_apks.sh
-        - export ANDROID_HOME=$HOME/android-sdk
-        - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
-        - flutter packages pub run build_runner build
         - cd ./example
       script:
         - flutter build apk
@@ -51,8 +48,6 @@ matrix:
       osx_image: xcode9.3
       before_script:
         - ./scripts/before_build_ipas.sh
-        - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
-        - flutter packages pub run build_runner build
         - cd ./example
       script:
         - flutter build ios --no-codesign
