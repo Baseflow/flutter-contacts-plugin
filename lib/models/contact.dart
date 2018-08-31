@@ -1,5 +1,6 @@
 part of contacts_plugin;
 
+@JsonSerializable()
 class Contact {
   List<Address> _addresses = <Address>[];
   List<EmailAddress> _emailAddresses = <EmailAddress>[];
@@ -13,7 +14,6 @@ class Contact {
 
   final String id;
   final bool isAggregate;
-  Object tag;
   String displayName;
   String prefix;
   String firstName;
@@ -23,6 +23,11 @@ class Contact {
   String suffix;
 
   Contact({@required this.id, @required this.isAggregate});
+
+  factory Contact.fromJson(Map<String, dynamic> json) =>
+      _$ContactFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ContactToJson(this);
 
   List<Address> get addresses => _addresses;
   set addresses(List<Address> value) => _addresses = List.from(value);

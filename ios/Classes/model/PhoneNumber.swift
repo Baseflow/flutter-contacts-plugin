@@ -8,7 +8,7 @@
 import Foundation
 
 class PhoneNumber : Codable {
-    var label : String?
-    var number : String?
-    var type : PhoneNumberType?
+    var label : String = ""
+    var number : String = ""
+    var type : PhoneNumberType = PhoneNumberType.other
 }

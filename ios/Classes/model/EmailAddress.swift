@@ -8,7 +8,7 @@
 import Foundation
 
 class EmailAddress : Codable {
-    var address : String?
-    var label : String?
-    var type : EmailAddressType?
+    var address : String = ""
+    var label : String = ""
+    var type : EmailAddressType = EmailAddressType.other
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 class Note : Codable {
-    var content : String?
+    var content : String = ""
 }

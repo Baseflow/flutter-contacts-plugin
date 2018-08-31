@@ -8,11 +8,11 @@
 import Foundation
 
 class Address : Codable {
-    var label : String?
-    var streetAddress : String?
-    var city : String?
-    var region : String?
-    var country : String?
-    var postalCode : String?
-    var type : AddressType?
+    var label : String = ""
+    var streetAddress : String = ""
+    var city : String = ""
+    var region : String = ""
+    var country : String = ""
+    var postalCode : String = ""
+    var type : AddressType = AddressType.other
 }

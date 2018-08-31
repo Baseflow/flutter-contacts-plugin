@@ -8,6 +8,7 @@
 import Foundation
 
 class Relationship : Codable {
-    var name : String?
-    var type : RelationshipType?
+    var label: String = ""
+    var name: String = ""
+    var type: RelationshipType = RelationshipType.other
 }

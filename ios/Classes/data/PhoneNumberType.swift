@@ -10,9 +10,11 @@ import Foundation
 enum PhoneNumberType : String, Codable {
     case home = "home"
     case homeFax = "homeFax"
+    case iphone = "iphone"
+    case main = "main"
+    case mobile = "mobile"
     case work = "work"
     case workFax = "workFax"
     case pager = "pager"
-    case mobile = "mobile"
     case other = "other"
 }

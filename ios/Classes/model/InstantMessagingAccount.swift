@@ -8,7 +8,7 @@
 import Foundation
 
 class InstantMessagingAccount : Codable {
-    var account : String?
-    var label : String?
-    var service : InstantMessagingService?
+    var account : String = ""
+    var label : String = ""
+    var service : InstantMessagingService = InstantMessagingService.other
 }

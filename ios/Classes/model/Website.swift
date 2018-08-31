@@ -8,5 +8,5 @@
 import Foundation
 
 class Website : Codable {
-    var address : String?
+    var address : String = ""
 }

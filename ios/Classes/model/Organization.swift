@@ -8,8 +8,8 @@
 import Foundation
 
 class Organization : Codable {
-    var contactTitle : String?
-    var label : String?
-    var name : String?
-    var type : OrganizationType?
+    var jobTitle : String = ""
+    var label : String = ""
+    var name : String = ""
+    var type : OrganizationType = OrganizationType.other
 }

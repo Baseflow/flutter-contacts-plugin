@@ -8,7 +8,16 @@
 import Foundation
 
 enum RelationshipType : String, Codable {
-    case significantOther = "significantOther"
+    case father = "father"
+    case mother = "mother"
+    case parent = "parent"
+    case brother = "brother"
+    case sister = "sister"
     case child = "child"
+    case friend = "friend"
+    case spouse = "spouse"
+    case partner = "partner"
+    case assistant = "assistant"
+    case manager = "manager"
     case other = "other"
 }
