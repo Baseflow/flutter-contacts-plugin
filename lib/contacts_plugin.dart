@@ -1,6 +1,7 @@
 library contacts_plugin;
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -19,10 +20,14 @@ part 'models/website.dart';
 part 'contacts_plugin.g.dart';
 
 class ContactsPlugin {
-  static const MethodChannel _channel = const MethodChannel('contacts');
+  static const MethodChannel _channel =
+      const MethodChannel('flutter.baseflow.com/contacts_plugin/methods');
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+  static Future<List<Contact>> get contacts async {
+    final dynamic jsonString = await _channel.invokeMethod('getContacts');
+    final List<dynamic> jsonObjects = json.decode(jsonString);
+    final List<Contact> contacts =
+        jsonObjects.map((jsonObject) => Contact.fromJson(jsonObject)).toList();
+    return contacts;
   }
 }

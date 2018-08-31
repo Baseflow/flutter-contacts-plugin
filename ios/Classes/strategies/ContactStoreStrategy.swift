@@ -14,11 +14,32 @@ class ContactStoreStrategy : ContactStrategy {
     func fetchContacts() -> [Contact] {
         let contactStore = CNContactStore()
         let keysToFetch = [
-            CNContactFormatter.descriptorForRequiredKeys(for: CNContactFormatterStyle.fullName),
+            CNContactDepartmentNameKey,
             CNContactEmailAddressesKey,
+            CNContactFamilyNameKey,
+            CNContactGivenNameKey,
+            CNContactIdentifierKey,
+            CNContactMiddleNameKey,
+            CNContactInstantMessageAddressesKey,
+            CNContactJobTitleKey,
+            CNContactNamePrefixKey,
+            CNContactNameSuffixKey,
+            CNContactNicknameKey,
+            CNContactNoteKey,
+            CNContactOrganizationNameKey,
             CNContactPhoneNumbersKey,
-            CNContactImageDataAvailableKey,
-            CNContactThumbnailImageDataKey] as [Any]
+            CNContactPostalAddressesKey,
+            CNContactRelationsKey,
+            CNContactSocialProfilesKey,
+            CNContactTypeKey,
+            CNContactUrlAddressesKey,
+            CNInstantMessageAddressServiceKey,
+            CNInstantMessageAddressUsernameKey,
+            CNPostalAddressCityKey,
+            CNPostalAddressStateKey,
+            CNPostalAddressStreetKey,
+            CNPostalAddressCountryKey,
+            CNPostalAddressPostalCodeKey] as [Any]
         
         // Get all the containers
         var allContainers: [CNContainer] = []
