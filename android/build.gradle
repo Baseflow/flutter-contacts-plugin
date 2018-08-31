@@ -1,4 +1,4 @@
-group 'com.example.contactsplugin'
+group 'com.baseflow.contactsplugin'
 version '1.0-SNAPSHOT'
 
 buildscript {

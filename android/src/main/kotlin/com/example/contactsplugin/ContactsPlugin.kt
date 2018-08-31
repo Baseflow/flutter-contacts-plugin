@@ -1,4 +1,4 @@
-package com.example.contactsplugin
+package com.baseflow.contactsplugin
 
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler

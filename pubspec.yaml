@@ -13,6 +13,8 @@ dependencies:
   json_annotation: ^1.0.0
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   build_runner: ^0.10.0
   json_serializable: ^1.0.0
 
@@ -22,7 +24,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   plugin:
-    androidPackage: com.example.contactsplugin
+    androidPackage: com.baseflow.contactsplugin
     pluginClass: ContactsPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
