@@ -1,5 +1,6 @@
-part of contacts;
+part of contacts_plugin;
 
+@JsonSerializable()
 class Address {
   AddressType type;
   String label;
@@ -8,4 +9,11 @@ class Address {
   String region;
   String country;
   String postalCode;
+
+  Address();
+
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
 }

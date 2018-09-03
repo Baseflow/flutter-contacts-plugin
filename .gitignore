@@ -12,6 +12,9 @@
 .svn/
 bin/
 
+# Ignore generated code files
+*.g.*
+
 # IntelliJ related
 *.iml
 *.ipr

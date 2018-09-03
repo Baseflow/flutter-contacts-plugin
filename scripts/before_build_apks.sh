@@ -23,4 +23,5 @@ gradle -v
 git clone https://github.com/flutter/flutter.git $HOME/flutter
 export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
 flutter doctor
-
+flutter packages get
+flutter packages pub run build_runner build

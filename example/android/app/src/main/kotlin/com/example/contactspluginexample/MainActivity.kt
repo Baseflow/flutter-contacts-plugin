@@ -1,4 +1,4 @@
-package com.example.contactsexample
+package com.baseflow.contactspluginexample
 
 import android.os.Bundle
 

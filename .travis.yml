@@ -17,6 +17,8 @@ matrix:
         - git clone https://github.com/flutter/flutter.git $HOME/flutter
         - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor
+        - flutter packages get
+        - flutter packages pub run build_runner build
       script:
         - flutter analyze
     # Job 2) Build the example binary for Android (APK)
@@ -36,12 +38,12 @@ matrix:
             - fonts-droid
       before_script:
         - ./scripts/before_build_apks.sh
-        - export ANDROID_HOME=$HOME/android-sdk
         - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
-      script:
+        - export ANDROID_HOME=$HOME/android-sdk
         - cd ./example
+      script:
         - flutter build apk
-    # Job 2) Build the example binary for iOS (IPA)
+    # Job 3) Build the example binary for iOS (IPA)
     - os: osx
       env:
         - SHARD="Build example ipas"
@@ -50,8 +52,8 @@ matrix:
       before_script:
         - ./scripts/before_build_ipas.sh
         - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
-      script:
         - cd ./example
+      script:
         - flutter build ios --no-codesign
 cache:
   directories:

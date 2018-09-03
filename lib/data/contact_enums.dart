@@ -1,4 +1,4 @@
-part of contacts;
+part of contacts_plugin;
 
 enum AddressType {
   home,
@@ -14,10 +14,15 @@ enum EmailAddressType {
 
 enum InstantMessagingService {
   aim,
-  msn,
-  yahoo,
+  facebook,
+  gaduGadu,
+  googleTalk,
   icq,
   jabber,
+  msn,
+  qq,
+  skype,
+  yahoo,
   other,
 }
 
@@ -29,15 +34,26 @@ enum OrganizationType {
 enum PhoneNumberType {
   home,
   homeFax,
+  iphone,
+  main,
+  mobile,
+  pager,
   work,
   workFax,
-  pager,
-  mobile,
   other,
 }
 
 enum RelationshipType {
-  significantOther,
+  father,
+  mother,
+  parent,
+  brother,
+  sister,
   child,
+  friend,
+  spouse,
+  partner,
+  assistant,
+  manager,
   other,
 }

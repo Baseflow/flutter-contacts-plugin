@@ -1,6 +1,6 @@
-# contacts_example
+# contacts_plugin_example
 
-Demonstrates how to use the contacts plugin.
+Demonstrates how to use the contacts_plugin plugin.
 
 ## Getting Started
 
