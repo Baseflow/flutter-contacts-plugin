@@ -2,7 +2,7 @@ part of contacts_plugin;
 
 @JsonSerializable()
 class Note {
-  String contents;
+  String content;
 
   Note();
 
