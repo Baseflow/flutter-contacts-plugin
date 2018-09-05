@@ -9,36 +9,36 @@ class Contact(val id: String, val isAggregate: Boolean) {
     var nickname: String = ""
     var suffix: String = ""
 
-    var addresses: Array<Address> = arrayOf()
+    var addresses: MutableList<Address> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
-    var emailAddresses: Array<EmailAddress> = arrayOf()
+    var emailAddresses: MutableList<EmailAddress> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
-    var instantMessagingAccounts: Array<InstantMessagingAccount> = arrayOf()
+    var instantMessagingAccounts: MutableList<InstantMessagingAccount> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
-    var notes: Array<Note> = arrayOf()
+    var notes: MutableList<Note> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
-    var organizations: Array<Organization> = arrayOf()
+    var organizations: MutableList<Organization> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
-    var phoneNumbers: Array<PhoneNumber> = arrayOf()
+    var phoneNumbers: MutableList<PhoneNumber> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
-    var relationships: Array<Relationship> = arrayOf()
+    var relationships: MutableList<Relationship> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
-    var website: Array<Website> = arrayOf()
+    var websites: MutableList<Website> = mutableListOf()
         set(value) {
-            field = arrayOf(*value)
+            field = mutableListOf(*value.toTypedArray())
         }
 }
