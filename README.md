@@ -11,15 +11,34 @@ master  | [![Build Status](https://travis-ci.com/BaseflowIT/flutter-contacts-plu
 
 ## Features
 
-* Automatically check and request necessary permissions to access the platform specific address book;
+* Automatically check and request the necessary permissions to access the platform specific address book;
 * Read contacts from the addres book;
-* Store new contacts in the address book;
-* Update details of existing contacts;
-* Delete existing contacts from the address book.
+* [WIP] Store new contacts in the address book;
+* [WIP] Update details of existing contacts;
+* [WIP] Delete existing contacts from the address book.
 
 ## Usage
 
-**[TODO: Describe the API]**
+To use this plugin, add `contacts_plugin` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/). For example:
+
+```yaml
+dependencies:
+  contacts_plugin: '^0.1.0'
+```
+
+> **NOTE:** There's a known issue with integrating plugins that use Swift into a Flutter project created with the Objective-C template. See issue [Flutter#16049](https://github.com/flutter/flutter/issues/16049) for help on integration.
+
+## API
+
+### Fetch all contacts
+
+To fetch all contacts from the address book make a call to the `getContacts` method:
+
+``` dart
+import 'package:geolocator/contacts_plugin.dart';
+
+List<Contact> contacts = await ContactsPlugin().getContacts();
+```
 
 ## Permissions
 

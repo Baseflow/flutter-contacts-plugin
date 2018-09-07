@@ -19,7 +19,6 @@ extension Array where Element:CNContact {
 extension CNContact {
     func toContact() -> Contact {
         let contact = Contact(id: self.identifier, isAggregate: true)
-        contact.displayName = self.description
         contact.prefix = self.namePrefix
         contact.firstName = self.givenName
         contact.middleName = self.middleName
