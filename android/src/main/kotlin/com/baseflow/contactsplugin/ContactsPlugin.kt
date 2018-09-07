@@ -16,7 +16,7 @@ class ContactsPlugin(private val registrar: PluginRegistry.Registrar): MethodCal
     companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "contacts_plugin")
+      val channel = MethodChannel(registrar.messenger(), "flutter.baseflow.com/contacts_plugin/methods")
       channel.setMethodCallHandler(ContactsPlugin(registrar))
     }
   }

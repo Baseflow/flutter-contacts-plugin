@@ -7,7 +7,6 @@ import android.database.Cursor
 import android.provider.ContactsContract
 import com.baseflow.contactsplugin.data.*
 import com.baseflow.contactsplugin.models.*
-import io.flutter.plugin.common.MethodChannel
 
 class ContactManager(private val androidContext: Context) {
 
@@ -63,13 +62,13 @@ class ContactManager(private val androidContext: Context) {
 
         when (dataType) {
             ContactsContract.CommonDataKinds.Nickname.CONTENT_ITEM_TYPE ->
-                contact.nickname = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Nickname.NAME))
+                contact.nickname = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Nickname.NAME)) ?: ""
             ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE -> {
-                contact.prefix = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.PREFIX))
-                contact.firstName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME))
-                contact.middleName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME))
-                contact.lastName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME))
-                contact.suffix = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.SUFFIX))
+                contact.prefix = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.PREFIX)) ?: ""
+                contact.firstName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME)) ?: ""
+                contact.middleName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME)) ?: ""
+                contact.lastName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME)) ?: ""
+                contact.suffix = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.SUFFIX)) ?: ""
             }
             ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE ->
                 contact.addresses.add(getAddress(cursor, resources))
@@ -92,17 +91,17 @@ class ContactManager(private val androidContext: Context) {
 
     private fun getAddress(cursor: Cursor, resources: Resources): Address {
         val address = Address()
-        address.country = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY))
-        address.region = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.REGION))
-        address.city = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.CITY))
-        address.postalCode = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POSTCODE))
+        address.country = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY)) ?: ""
+        address.region = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.REGION)) ?: ""
+        address.city = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.CITY)) ?: ""
+        address.postalCode = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POSTCODE)) ?: ""
 
         val addressDataKind: Int = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.TYPE))
         address.type = addressDataKind.toAddressType()
         address.label = if (addressDataKind != ContactsContract.CommonDataKinds.StructuredPostal.TYPE_CUSTOM)
                 ContactsContract.CommonDataKinds.StructuredPostal.getTypeLabel(resources, addressDataKind, "").toString()
             else
-                cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.LABEL))
+                cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.LABEL)) ?: ""
 
         val street: String? = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.STREET))
         val pobox: String? = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.POBOX))
@@ -123,7 +122,7 @@ class ContactManager(private val androidContext: Context) {
 
     private fun getEmailAddress(cursor: Cursor, resources: Resources): EmailAddress {
         val emailAddress = EmailAddress()
-        emailAddress.address = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DATA1))
+        emailAddress.address = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DATA1)) ?: ""
 
         val emailAddressKind: Int = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.TYPE))
         emailAddress.type = emailAddressKind.toEmailAddressType()
@@ -131,14 +130,14 @@ class ContactManager(private val androidContext: Context) {
                 if (emailAddressKind != ContactsContract.CommonDataKinds.Email.TYPE_CUSTOM)
                     ContactsContract.CommonDataKinds.StructuredPostal.getTypeLabel(resources, emailAddressKind, "").toString()
                 else
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.LABEL))
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.LABEL)) ?: ""
 
         return emailAddress
     }
 
     private fun getInstantMessagingAccount(cursor: Cursor, resources: Resources): InstantMessagingAccount {
         val instantMessagingAccount = InstantMessagingAccount()
-        instantMessagingAccount.account = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Im.DATA))
+        instantMessagingAccount.account = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Im.DATA)) ?: ""
 
         val instanMessagingKind: Int = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Im.PROTOCOL))
         instantMessagingAccount.service = instanMessagingKind.toInstantMessagingService()
@@ -146,22 +145,22 @@ class ContactManager(private val androidContext: Context) {
                 if (instanMessagingKind != ContactsContract.CommonDataKinds.Im.TYPE_CUSTOM)
                     ContactsContract.CommonDataKinds.Im.getProtocolLabel(resources, instanMessagingKind, "").toString()
                 else
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Im.LABEL))
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Im.LABEL)) ?: ""
 
         return instantMessagingAccount
     }
 
     private fun getNote(cursor: Cursor): Note {
         val note = Note()
-        note.content = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Note.DATA1))
+        note.content = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Note.DATA1)) ?: ""
 
         return note
     }
 
     private fun getOrganization(cursor: Cursor, resources: Resources): Organization {
         val organization = Organization()
-        organization.name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.COMPANY))
-        organization.contactTitle = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.TITLE))
+        organization.name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.COMPANY)) ?: ""
+        organization.contactTitle = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.TITLE)) ?: ""
 
         val organizationKind: Int = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.TYPE))
         organization.type = organizationKind.toOrganizationType()
@@ -169,14 +168,14 @@ class ContactManager(private val androidContext: Context) {
                 if (organizationKind != ContactsContract.CommonDataKinds.Organization.TYPE_CUSTOM)
                     ContactsContract.CommonDataKinds.Organization.getTypeLabel(resources, organizationKind, "").toString()
                 else
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.LABEL))
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Organization.LABEL)) ?: ""
 
         return organization
     }
 
     private fun getPhoneNumber(cursor: Cursor, resources: Resources): PhoneNumber {
         val phoneNumber = PhoneNumber()
-        phoneNumber.number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+        phoneNumber.number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)) ?: ""
 
         val phoneNumberKind: Int = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE))
         phoneNumber.type = phoneNumberKind.toPhoneNumberType()
@@ -184,7 +183,7 @@ class ContactManager(private val androidContext: Context) {
                 if (phoneNumberKind != ContactsContract.CommonDataKinds.Phone.TYPE_CUSTOM)
                     ContactsContract.CommonDataKinds.Phone.getTypeLabel(resources, phoneNumberKind, "").toString()
                 else
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.LABEL))
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.LABEL)) ?: ""
 
         return phoneNumber
     }
@@ -197,14 +196,14 @@ class ContactManager(private val androidContext: Context) {
                 if (relationshipKind != ContactsContract.CommonDataKinds.Relation.TYPE_CUSTOM)
                     ContactsContract.CommonDataKinds.Relation.getTypeLabel(resources, relationshipKind, "").toString()
                 else
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Relation.LABEL))
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Relation.LABEL)) ?: ""
 
         return relationship
     }
 
     private fun getWebsite(cursor: Cursor): Website {
         val website = Website()
-        website.address = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Website.URL))
+        website.address = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Website.URL)) ?: ""
 
         return website
     }
