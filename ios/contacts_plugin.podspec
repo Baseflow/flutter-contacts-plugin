@@ -4,13 +4,13 @@
 Pod::Spec.new do |s|
   s.name             = 'contacts_plugin'
   s.version          = '0.0.1'
-  s.summary          = 'A new flutter plugin project.'
+  s.summary          = 'A Flutter contacts plugin which provides easy access to the platform specific address book.'
   s.description      = <<-DESC
-A new flutter plugin project.
+A Flutter contacts plugin which provides easy access to the platform specific address book.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/BaseflowIT/flutter-contacts-plugin'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Baseflow' => 'hello@baseflow.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
