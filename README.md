@@ -23,7 +23,7 @@ To use this plugin, add `contacts_plugin` as a [dependency in your pubspec.yaml 
 
 ```yaml
 dependencies:
-  contacts_plugin: '^0.1.0'
+  contacts_plugin: '^0.0.1'
 ```
 
 > **NOTE:** There's a known issue with integrating plugins that use Swift into a Flutter project created with the Objective-C template. See issue [Flutter#16049](https://github.com/flutter/flutter/issues/16049) for help on integration.

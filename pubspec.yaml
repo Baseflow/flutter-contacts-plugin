@@ -1,8 +1,9 @@
 name: contacts_plugin
-description: A new flutter plugin project.
+description: A Flutter contacts plugin which provides easy access to the platform specific address book.
 version: 0.0.1
-author:
-homepage:
+author: Baseflow <hello@baseflow.com>
+homepage: https://github.com/baseflowit/flutter-contacts-plugin
+
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
