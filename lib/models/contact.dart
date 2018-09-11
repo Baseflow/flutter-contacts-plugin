@@ -1,7 +1,6 @@
 part of contacts_plugin;
 
 /// A representation of a contact retrieved from the platforms address book.
-@JsonSerializable()
 class Contact {
   List<Address> _addresses = <Address>[];
   List<EmailAddress> _emailAddresses = <EmailAddress>[];
@@ -44,11 +43,75 @@ class Contact {
   Contact({@required this.id, @required this.isAggregate});
 
   /// Create a new instance of the [Contact] class and populates it's properties based on the supplied JSON message.
-  factory Contact.fromJson(Map<String, dynamic> json) =>
-      _$ContactFromJson(json);
+  factory Contact.fromJson(Map<String, dynamic> json) {
+    return Contact(
+        id: json['id'] as String, isAggregate: json['isAggregate'] as bool)
+      ..displayName = json['displayName'] as String
+      ..prefix = json['prefix'] as String
+      ..firstName = json['firstName'] as String
+      ..middleName = json['middleName'] as String
+      ..lastName = json['lastName'] as String
+      ..nickName = json['nickName'] as String
+      ..suffix = json['suffix'] as String
+      ..addresses = (json['addresses'] as List)
+          ?.map((e) =>
+              e == null ? null : Address.fromJson(e as Map<String, dynamic>))
+          ?.toList()
+      ..emailAddresses = (json['emailAddresses'] as List)
+          ?.map((e) => e == null
+              ? null
+              : EmailAddress.fromJson(e as Map<String, dynamic>))
+          ?.toList()
+      ..instantMessagingAccounts = (json['instantMessagingAccounts'] as List)
+          ?.map((e) => e == null
+              ? null
+              : InstantMessagingAccount.fromJson(e as Map<String, dynamic>))
+          ?.toList()
+      ..notes = (json['notes'] as List)
+          ?.map((e) =>
+              e == null ? null : Note.fromJson(e as Map<String, dynamic>))
+          ?.toList()
+      ..organizations = (json['organizations'] as List)
+          ?.map((e) => e == null
+              ? null
+              : Organization.fromJson(e as Map<String, dynamic>))
+          ?.toList()
+      ..phoneNumbers = (json['phoneNumbers'] as List)
+          ?.map((e) => e == null
+              ? null
+              : PhoneNumber.fromJson(e as Map<String, dynamic>))
+          ?.toList()
+      ..relationships = (json['relationships'] as List)
+          ?.map((e) => e == null
+              ? null
+              : Relationship.fromJson(e as Map<String, dynamic>))
+          ?.toList()
+      ..websites = (json['websites'] as List)
+          ?.map((e) =>
+              e == null ? null : Website.fromJson(e as Map<String, dynamic>))
+          ?.toList();
+  }
 
   /// Converts the [Contact] instance to a key / value map which can easily be serialized to a JSON string.
-  Map<String, dynamic> toJson() => _$ContactToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': this.id,
+        'isAggregate': this.isAggregate,
+        'displayName': this.displayName,
+        'prefix': this.prefix,
+        'firstName': this.firstName,
+        'middleName': this.middleName,
+        'lastName': this.lastName,
+        'nickName': this.nickName,
+        'suffix': this.suffix,
+        'addresses': this.addresses,
+        'emailAddresses': this.emailAddresses,
+        'instantMessagingAccounts': this.instantMessagingAccounts,
+        'notes': this.notes,
+        'organizations': this.organizations,
+        'phoneNumbers': this.phoneNumbers,
+        'relationships': this.relationships,
+        'websites': this.websites
+      };
 
   /// A collection of all addresses related to this contact.
   List<Address> get addresses => _addresses;

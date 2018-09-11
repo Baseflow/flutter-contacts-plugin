@@ -1,7 +1,6 @@
 part of contacts_plugin;
 
 /// A representation of a telephone number for the contact.
-@JsonSerializable()
 class PhoneNumber {
   /// A user defined label for this telephone number.
   String label;
@@ -16,9 +15,18 @@ class PhoneNumber {
   PhoneNumber();
 
   /// Create a new instance of the [PhoneNumber] class and populates it's properties based on the supplied JSON message.
-  factory PhoneNumber.fromJson(Map<String, dynamic> json) =>
-      _$PhoneNumberFromJson(json);
+  factory PhoneNumber.fromJson(Map<String, dynamic> json) {
+    return PhoneNumber()
+      ..label = json['label'] as String
+      ..number = json['number'] as String
+      ..type =
+          _JsonCodec._decodeNullableEnum(PhoneNumberType.values, json['type']);
+  }
 
   /// Converts the [PhoneNumber] instance to a key / value map which can easily be serialized to a JSON string.
-  Map<String, dynamic> toJson() => _$PhoneNumberToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'label': this.label,
+        'number': this.number,
+        'type': _JsonCodec._encodeNullableEnum(this.type)
+      };
 }
