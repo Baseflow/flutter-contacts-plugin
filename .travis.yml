@@ -18,7 +18,6 @@ matrix:
         - export PATH=$HOME/flutter/bin:$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor
         - flutter packages get
-        - flutter packages pub run build_runner build
       script:
         - flutter analyze
     # Job 2) Build the example binary for Android (APK)
