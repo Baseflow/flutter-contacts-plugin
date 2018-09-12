@@ -1,6 +1,6 @@
 name: contacts_plugin
 description: A Flutter contacts plugin which provides easy access to the platform specific address book.
-version: 0.0.1
+version: 0.0.2
 author: Baseflow <hello@baseflow.com>
 homepage: https://github.com/baseflowit/flutter-contacts-plugin
 
@@ -11,14 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  json_annotation: ^1.0.0
+
   permission_handler: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^0.10.0
-  json_serializable: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
