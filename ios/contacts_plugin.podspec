@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'contacts_plugin'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'A Flutter contacts plugin which provides easy access to the platform specific address book.'
   s.description      = <<-DESC
 A Flutter contacts plugin which provides easy access to the platform specific address book.
