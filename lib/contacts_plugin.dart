@@ -5,7 +5,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 part 'data/contact_enums.dart';
@@ -18,7 +17,7 @@ part 'models/organization.dart';
 part 'models/phone_number.dart';
 part 'models/relationship.dart';
 part 'models/website.dart';
-part 'contacts_plugin.g.dart';
+part 'utils/json_codec.dart';
 
 /// Provides easy access to the platform specific address book (using the Contacts SDK on iOS and the Contacts Provider on Android)
 class ContactsPlugin {

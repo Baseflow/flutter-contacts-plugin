@@ -1,7 +1,6 @@
 part of contacts_plugin;
 
 /// A representation of a instant messaging account linked to a contact.
-@JsonSerializable()
 class InstantMessagingAccount {
   /// The name of the account (or account name).
   String account;
@@ -16,9 +15,18 @@ class InstantMessagingAccount {
   InstantMessagingAccount();
 
   /// Create a new instance of the [InstantMessagingAccount] class and populates it's properties based on the supplied JSON message.
-  factory InstantMessagingAccount.fromJson(Map<String, dynamic> json) =>
-      _$InstantMessagingAccountFromJson(json);
+  factory InstantMessagingAccount.fromJson(Map<String, dynamic> json) {
+    return InstantMessagingAccount()
+      ..account = json['account'] as String
+      ..label = json['label'] as String
+      ..service = _JsonCodec._decodeNullableEnum(
+          InstantMessagingService.values, json['service']);
+  }
 
   /// Converts the [InstantMessagingAccount] instance to a key / value map which can easily be serialized to a JSON string.
-  Map<String, dynamic> toJson() => _$InstantMessagingAccountToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'account': this.account,
+        'label': this.label,
+        'service': _JsonCodec._encodeNullableEnum(this.service)
+      };
 }
